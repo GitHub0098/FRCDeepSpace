@@ -10,14 +10,12 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import frc.robot.commands.rollers.DefaultRollers;
-
 /**
  * Add your docs here.
  */
-public class Rollers extends Subsystem {
+public class Rollers extends SubsystemBase {
 
   public static Rollers rollers;
   private VictorSPX rollersMotors;
@@ -26,7 +24,6 @@ public class Rollers extends Subsystem {
   //DigitalInput topSwitch;
   boolean canGoUp, canGoDown = false;
 
-  public static BallIntake ballintake;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -70,9 +67,5 @@ public class Rollers extends Subsystem {
     spinRollers(rollersSpeed);
   }
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    setDefaultCommand(new DefaultRollers());
-  }
+  
 }

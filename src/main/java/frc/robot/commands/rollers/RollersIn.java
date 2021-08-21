@@ -8,19 +8,19 @@
 package frc.robot.commands.rollers;
 
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Rollers;
 
 /**
  * This command spins the rollers inwards.
  * Meant to be used on the ground when picking up a ball.
  */
-public class RollersIn extends Command {
+public class RollersIn extends CommandBase {
 
   Rollers rollers;
 
   public RollersIn() {
-    requires(Rollers.getInstance());
+    addRequirements(Rollers.getInstance());
     rollers = Rollers.getInstance();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -28,34 +28,28 @@ public class RollersIn extends Command {
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  public void initialize() {
     //setTimeout(3);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  public void execute() {
     rollers.rollersIn(-.35);
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  public boolean isFinished() {
     //return isTimedOut();
     return false;
   } 
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  public void end(boolean interrupted) {
     rollers.rollersIn(0);
   }
   
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-    rollers.rollersIn(0);
-  }
 }

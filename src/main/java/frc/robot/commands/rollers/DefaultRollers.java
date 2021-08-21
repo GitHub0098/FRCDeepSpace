@@ -7,7 +7,6 @@
 
 package frc.robot.commands.rollers;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.input.XboxController;
 import frc.robot.input.XboxController.XboxAxis;
@@ -15,31 +14,33 @@ import frc.robot.subsystems.Rollers;
 
 import java.lang.Math;
 
+import edu.wpi.first.wpilibj2.command.CommandBase;
+
 /**
  * Gives the operator control of the rollers.
  * Currently bound to the right joystick on the Xbox Controller
  */
-public class DefaultRollers extends Command {
+public class DefaultRollers extends CommandBase {
   double speed, speedLeft, speedRight;
   double dspeed;
   XboxAxis rightJoystickY = XboxAxis.kYRight;
   public DefaultRollers() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Rollers.getInstance());
+    addRequirements(Rollers.getInstance());
     //requires(BallIntake.getInstance());
 
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  public void initialize() {
     Rollers.getInstance().spinRollers(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  public void execute() {
     //speed = OI.getInstance().getXbox().getAxis(XboxController.XboxAxis.kXLeft);
     speed = 0;
     //if(Math.abs(OI.getInstance().getXbox().getAxis(XboxController.XboxAxis.kXRight)) > .05) {
@@ -81,18 +82,15 @@ public class DefaultRollers extends Command {
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  public boolean isFinished() {
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  public void end(boolean interrupted) {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
+ 
+ 
 }
