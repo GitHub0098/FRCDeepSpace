@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.rollers.DefaultRollers;
+import frc.robot.commands.DefaultDrive.DefaultDrive;
 import frc.robot.subsystems.Rollers;
 
 /**
@@ -24,7 +24,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     Rollers rollers = Rollers.getInstance();
-    rollers.setDefaultCommand(new DefaultRollers());
+    rollers.setDefaultCommand(new DefaultDrive());
     // Configure the button bindings
     configureButtonBindings();
   }
